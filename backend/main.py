@@ -8,7 +8,7 @@ app = FastAPI()
 
 # Add CORS middleware
 origins = [
-    "http://localhost:3000",  # Frontend URL
+    "https://avi20025.github.io/Financial-Data-Filtering-App/",  # Frontend URL
 ]
 
 app.add_middleware(
