@@ -43,7 +43,7 @@ const FinancialDataTable = () => {
     params.append("descending", tempFilters.descending);
 
     axios
-      .get(`https://financial-data-filtering-app-backend.onrender.com/fetch_data`)
+      .get(`https://financial-data-filtering-app-backend.onrender.com/fetch_data?${params.toString()}`)
       .then((response) => {
         if (response.data && response.data.length > 0) {
           setData(response.data);
