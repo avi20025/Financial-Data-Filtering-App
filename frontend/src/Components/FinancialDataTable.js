@@ -78,8 +78,8 @@ const FinancialDataTable = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="mb-4">
-        <h2 className="text-lg font-bold">Filters</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <h2 className="text-lg font-bold mb-4">Filters</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block font-medium">Start Date</label>
             <input
@@ -88,7 +88,7 @@ const FinancialDataTable = () => {
               onChange={(e) =>
                 setTempFilters({ ...tempFilters, startDate: e.target.value })
               }
-              className="border px-2 py-1 w-full"
+              className="border px-2 py-1 w-full rounded"
             />
           </div>
           <div>
@@ -99,7 +99,7 @@ const FinancialDataTable = () => {
               onChange={(e) =>
                 setTempFilters({ ...tempFilters, endDate: e.target.value })
               }
-              className="border px-2 py-1 w-full"
+              className="border px-2 py-1 w-full rounded"
             />
           </div>
           <div>
@@ -110,7 +110,7 @@ const FinancialDataTable = () => {
               onChange={(e) =>
                 setTempFilters({ ...tempFilters, minRevenue: e.target.value })
               }
-              className="border px-2 py-1 w-full"
+              className="border px-2 py-1 w-full rounded"
             />
           </div>
           <div>
@@ -121,7 +121,7 @@ const FinancialDataTable = () => {
               onChange={(e) =>
                 setTempFilters({ ...tempFilters, maxRevenue: e.target.value })
               }
-              className="border px-2 py-1 w-full"
+              className="border px-2 py-1 w-full rounded"
             />
           </div>
           <div>
@@ -131,7 +131,7 @@ const FinancialDataTable = () => {
               onChange={(e) =>
                 setTempFilters({ ...tempFilters, sortBy: e.target.value })
               }
-              className="border px-2 py-1 w-full"
+              className="border px-2 py-1 w-full rounded"
             >
               <option value="Date">Date</option>
               <option value="Revenue">Revenue</option>
@@ -140,59 +140,55 @@ const FinancialDataTable = () => {
           </div>
           <div>
             <label className="block font-medium">Order</label>
-            <select
-              value={tempFilters.descending}
-              onChange={(e) =>
+            <select value={tempFilters.descending} onChange={(e) =>
                 setTempFilters({
                   ...tempFilters,
                   descending: e.target.value === "true",
                 })
               }
-              className="border px-2 py-1 w-full"
-            >
-              <option value="false">Ascending</option>
-              <option value="true">Descending</option>
+              className="border px-2 py-1 w-full rounded">
+                <option value="false">Ascending</option>
+                <option value="true">Descending</option>
             </select>
           </div>
         </div>
-        <button
-          onClick={applyFilters}
-          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-        >
+        <button onClick={applyFilters} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded w-full md:w-auto">
           Apply Filters
         </button>
       </div>
-      <table className="min-w-full table-auto border-collapse">
-        <thead>
-          <tr>
-            {Object.keys(data[0] || {}).map((key, index) => (
-              <th key={index} className="border px-4 py-2">
-                {key}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.length === 0 ? (
+      <div className="overflow-x-auto">
+        <table className="min-w-full table-auto border-collapse">
+            <thead>
             <tr>
-              <td colSpan="6" className="border px-4 py-2 text-center">
-                No data available
-              </td>
+                {Object.keys(data[0] || {}).map((key, index) => (
+                <th key={index} className="border px-4 py-2">
+                    {key}
+                </th>
+                ))}
             </tr>
-          ) : (
-            data.map((item, index) => (
-              <tr key={index}>
-                <td className="border px-4 py-2">{item.Date}</td>
-                <td className="border px-4 py-2">{formatCurrency(item.Revenue)}</td>
-                <td className="border px-4 py-2">{formatCurrency(item["Net Income"])}</td>
-                <td className="border px-4 py-2">{formatCurrency(item["Gross Profit"])}</td>
-                <td className="border px-4 py-2">{item["Earnings Per Share (EPS)"]}</td>
-                <td className="border px-4 py-2">{formatCurrency(item["Operating Income"])}</td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+                {data.length === 0 ? (
+                    <tr>
+                    <td colSpan="6" className="border px-4 py-2 text-center">
+                        No data available
+                    </td>
+                    </tr>
+                ) : (
+                    data.map((item, index) => (
+                    <tr key={index}>
+                        <td className="border px-4 py-2">{item.Date}</td>
+                        <td className="border px-4 py-2">{formatCurrency(item.Revenue)}</td>
+                        <td className="border px-4 py-2">{formatCurrency(item["Net Income"])}</td>
+                        <td className="border px-4 py-2">{formatCurrency(item["Gross Profit"])}</td>
+                        <td className="border px-4 py-2">{item["Earnings Per Share (EPS)"]}</td>
+                        <td className="border px-4 py-2">{formatCurrency(item["Operating Income"])}</td>
+                    </tr>
+                    ))
+                )}
+            </tbody>
+        </table>
+      </div>
     </div>
   );
 };
