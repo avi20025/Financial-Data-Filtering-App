@@ -27,3 +27,6 @@ Instructions to run the project locally:
 Deployed app link:
 
     https://avi20025.github.io/Financial-Data-Filtering-App/
+
+    - Front End is hosted on GitHub Pages
+    - Back End is hosted on Render
