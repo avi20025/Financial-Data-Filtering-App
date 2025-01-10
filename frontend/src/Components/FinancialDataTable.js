@@ -65,8 +65,11 @@ const FinancialDataTable = () => {
   }, []); // Only fetch once on initial load
 
   const applyFilters = () => {
-    setFilters({ ...tempFilters }); // Update filters when Apply Filters button is clicked
-    fetchData(); // Fetch data based on the selected filters
+    // Update filters when Apply Filters button is clicked
+    setFilters({ ...tempFilters });
+
+    // Fetch data based on the selected filters
+    fetchData(); 
   };
 
   // If data is still loading
@@ -82,8 +85,7 @@ const FinancialDataTable = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block font-medium">Start Date</label>
-            <input type="date" value={tempFilters.startDate} 
-              onChange={(e) =>
+            <input type="date" value={tempFilters.startDate} onChange={(e) =>
                 setTempFilters({ ...tempFilters, startDate: e.target.value })
               }
               className="border px-2 py-1 w-full rounded"
@@ -95,10 +97,7 @@ const FinancialDataTable = () => {
           </div>
           <div>
             <label className="block font-medium">End Date</label>
-            <input
-              type="date"
-              value={tempFilters.endDate}
-              onChange={(e) =>
+            <input type="date" value={tempFilters.endDate} onChange={(e) =>
                 setTempFilters({ ...tempFilters, endDate: e.target.value })
               }
               className="border px-2 py-1 w-full rounded"
@@ -110,10 +109,7 @@ const FinancialDataTable = () => {
           </div>
           <div>
             <label className="block font-medium">Min Revenue</label>
-            <input
-              type="number"
-              value={tempFilters.minRevenue}
-              onChange={(e) =>
+            <input type="number" value={tempFilters.minRevenue} onChange={(e) =>
                 setTempFilters({ ...tempFilters, minRevenue: e.target.value })
               }
               className="border px-2 py-1 w-full rounded"
@@ -121,10 +117,7 @@ const FinancialDataTable = () => {
           </div>
           <div>
             <label className="block font-medium">Max Revenue</label>
-            <input
-              type="number"
-              value={tempFilters.maxRevenue}
-              onChange={(e) =>
+            <input type="number" value={tempFilters.maxRevenue} onChange={(e) =>
                 setTempFilters({ ...tempFilters, maxRevenue: e.target.value })
               }
               className="border px-2 py-1 w-full rounded"
@@ -132,9 +125,7 @@ const FinancialDataTable = () => {
           </div>
           <div>
             <label className="block font-medium">Sort By</label>
-            <select
-              value={tempFilters.sortBy}
-              onChange={(e) =>
+            <select value={tempFilters.sortBy} onChange={(e) =>
                 setTempFilters({ ...tempFilters, sortBy: e.target.value })
               }
               className="border px-2 py-1 w-full rounded"
@@ -147,12 +138,10 @@ const FinancialDataTable = () => {
           <div>
             <label className="block font-medium">Order</label>
             <select value={tempFilters.descending} onChange={(e) =>
-                setTempFilters({
-                  ...tempFilters,
-                  descending: e.target.value === "true",
-                })
+                setTempFilters({...tempFilters, descending: e.target.value === "true",})
               }
-              className="border px-2 py-1 w-full rounded">
+              className="border px-2 py-1 w-full rounded"
+            >
                 <option value="false">Ascending</option>
                 <option value="true">Descending</option>
             </select>

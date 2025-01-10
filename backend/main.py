@@ -6,7 +6,6 @@ import requests
 
 app = FastAPI()
 
-# Add CORS middleware
 origins = [
     "https://avi20025.github.io",
     "http://localhost:3000", 
@@ -14,10 +13,10 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allow only the frontend URL
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 API_KEY = "IKKLSO57LW7GbaqMu3gVYFPmmBXm5UKf"
