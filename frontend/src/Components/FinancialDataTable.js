@@ -82,14 +82,16 @@ const FinancialDataTable = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block font-medium">Start Date</label>
-            <input
-              type="date"
-              value={tempFilters.startDate}
+            <input type="date" value={tempFilters.startDate} 
               onChange={(e) =>
                 setTempFilters({ ...tempFilters, startDate: e.target.value })
               }
               className="border px-2 py-1 w-full rounded"
             />
+            <button onClick={() => setTempFilters({ ...tempFilters, startDate: "" })}
+            className="bg-gray-200 text-gray-600 px-2 py-1 rounded hover:bg-gray-300">       
+                Reset
+            </button>
           </div>
           <div>
             <label className="block font-medium">End Date</label>
@@ -101,6 +103,10 @@ const FinancialDataTable = () => {
               }
               className="border px-2 py-1 w-full rounded"
             />
+            <button onClick={() => setTempFilters({ ...tempFilters, endDate: "" })}
+            className="bg-gray-200 text-gray-600 px-2 py-1 rounded hover:bg-gray-300">       
+                Reset
+            </button>
           </div>
           <div>
             <label className="block font-medium">Min Revenue</label>
